@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {InputGroup,FormControl,Button } from 'react-bootstrap';
-import logo from '../logo.svg'
 
 import { getJsonNode } from '../utils';
 
@@ -8,17 +7,29 @@ import { getJsonNode } from '../utils';
 const Header : React.FC<any> = (props) => { 
 
     const [inputValue, setValue] = useState('');
+    const [enableSearch, setEnableSearch] = useState(true);
 
     let inputFile = React.createRef<HTMLInputElement>();
     
     const SearchBC = async () => {
-        if(inputValue.length != 0)
+        if(!enableSearch)
+        {
+            alert("No puede realizar un busqueda en menos de 10 segundos.");
+            return false;
+        }
+
+        if(inputValue.length != 0 && props.data.address != inputValue && enableSearch)
         {
             const data = await getJsonNode(inputValue);
             if(data.txs != null ){
                 setValue('');
                 props.sBC(data);
             }
+            setEnableSearch(false);
+            
+            setTimeout(() => {
+                setEnableSearch(true);
+            }, 10*1000);
         }   
     };
     const ImportBC = () => {
@@ -50,11 +61,9 @@ const Header : React.FC<any> = (props) => {
 
     return <>
         <header style={{position:'relative',width:'100%', height:'50px', background:'#333', color:'#fff', padding:'5px', justifyContent:'center',alignItems:'center'}}>
-            
-            <div style={{"display":"flex","flexDirection":"row","width":"100%","alignItems":"flex-start"}} >
-            
-                <div style={{width:'100%'}}>
-                    
+            <div style={{"display":"flex","flexDirection":"row","width":"100%","alignItems":"flex-start","justifyContent":"space-between"}} >
+
+                <div>
                     <InputGroup className="mb-3" style={{width:'300px'}}>
                         <FormControl
                         placeholder="Search"
@@ -65,6 +74,10 @@ const Header : React.FC<any> = (props) => {
                         />
                         <Button onClick={() => { SearchBC() }}>Search</Button>
                     </InputGroup>
+                </div>
+
+                <div className="m-2">
+                BitIntelligence
                 </div>
 
                 <div className="mb-3" style={{"display":"flex","flexDirection":"row","width":"209px","justifyContent":"space-evenly","alignItems":"center"}}>

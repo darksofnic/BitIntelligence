@@ -11,19 +11,9 @@ export const randomisePosition = (position: { x: number, y: number }) => ({
     y: position.y - (Math.random() - .5) * 10
 });
 
-  
-export function formatMoney(number:number, places:number = 0, symbol:string = '', thousand:string = '', decimal:string = ''){
-    number = number || 0;
-    places = !isNaN(places = Math.abs(places)) ? places : 0;
-    symbol = symbol !== undefined ? symbol : "$ ";
-    thousand = thousand || ",";
-    decimal = decimal || ".";
-    var negative = number < 0 ? "-" : "";
-    var i : string = parseInt(Math.abs(+number || 0).toFixed(places), 10) + "";
-    var j : number = (j = i.length) > 3 ? j % 3 : 0;
-    return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - parseInt(i)).toFixed(places).slice(2) : "");
+export function formatMoneyToBTC(number:number){
+    return (number/100000000)+" BTC";
 }
-
 
 
 export const getJsonNode = async (node:any)  : Promise<any> => {

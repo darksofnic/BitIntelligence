@@ -5,8 +5,9 @@ import { useSigma, useLoadGraph,useRegisterEvents } from 'react-sigma-v2'
 
 import { Attributes } from "graphology-types";
 import { FiltersState } from "../types";
+import { parse } from 'node:path/win32';
 
-const Search: FC<{ filters: FiltersState }> = ({ filters }) => {
+const Search: FC<{ filters : FiltersState}> = ( { filters }) => {
 
     const sigma = useSigma();
   
@@ -18,10 +19,10 @@ const Search: FC<{ filters: FiltersState }> = ({ filters }) => {
         const newValues: Array<{ id: string; label: string }> = [];
         const lcSearch = search.toLowerCase();
         if (!selected && search.length > 1) {
-        sigma.getGraph().forEachNode((key: string, attributes: Attributes): void => {
-            if (!attributes.hidden && attributes.label && attributes.label.toLowerCase().indexOf(lcSearch) === 0)
-            newValues.push({ id: key, label: attributes.label });
-        });
+          sigma.getGraph().forEachNode((key: string, attributes: Attributes): void => {
+              if (!attributes.hidden && attributes.label && attributes.label.toLowerCase().indexOf(lcSearch) === 0)
+              newValues.push({ id: key, label: attributes.label });
+          });
         }
         setValues(newValues);
     };
@@ -68,16 +69,12 @@ const Search: FC<{ filters: FiltersState }> = ({ filters }) => {
 
     const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter" && values.length) {
-        setSearch(values[0].label);
-        setSelected(values[0].id);
+          setSearch(values[0].label);
+          setSelected(values[0].id);
         }
     };
 
-
-
-    return (
-
-    <div className="search-wrapper" style={{"background":"#404040","border":"1px solid #5a5a5a","boxShadow":"4px -3px 6px 1px #000000e0","position":"absolute","bottom":"10px","left":"10px","padding":"5px","borderRadius":"10px","width":"200px"}}>
+    return (<div className="search-wrapper" style={{"background":"#404040","border":"1px solid #5a5a5a","boxShadow":"4px -3px 6px 1px #000000e0","position":"absolute","bottom":"10px","left":"10px","padding":"5px","borderRadius":"10px","minWidth":"200px"}}>
       <input
         type="search"
         placeholder="Search in nodes..."
@@ -87,7 +84,6 @@ const Search: FC<{ filters: FiltersState }> = ({ filters }) => {
         onKeyPress={onKeyPress}
         style={{"background":"transparent","border":"0px","color":"#fff","outline":"none"}}
       />
-     
       <datalist id="nodes">
         {values.map((value: { id: string; label: string }) => (
           <option key={value.id} value={value.label}>
@@ -95,10 +91,7 @@ const Search: FC<{ filters: FiltersState }> = ({ filters }) => {
           </option>
         ))}
       </datalist>
-    </div>
-       
-    
-    );
+    </div>);
 }
 
 export default Search;
