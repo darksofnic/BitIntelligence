@@ -8,16 +8,8 @@ import VGraph from './view/graph'
 
 import { FiltersState } from "./api/types";
 import { SigmaContainer, useSigma } from 'react-sigma-v2';
-<<<<<<< HEAD
 import Icon from './components/icon';
 
-=======
-import './static/css/App.css';
-import Header from './components/header';
-import Search from './components/search';
-import Graph from './components/graph';
-import Comments from './components/comments';
->>>>>>> d0042f81fc99a4b7c22e0faef8bf46dbaaca06c8
 
 
 function App() {
@@ -63,7 +55,6 @@ function App() {
   let _about = ((path != '/about') ? <li><Link to="/about" >About Us</Link></li> : null)
 
   return (
-<<<<<<< HEAD
     <div className="App">
 
 
@@ -91,16 +82,6 @@ function App() {
       </Routes>
 
     </div>
-=======
-    <>
-      <Header title={_infoProject.name} desc={_infoProject.desc} sBC={(data:any) => {setDataBC(data)}} data={dataBC} sigmaData={currentSigma} sigma={sigma} />
-      <SigmaContainer>
-        <Search filters={filtersState} />
-        <Graph data={dataBC} sBC={(data:any) => {setDataBC(data)}} sCS={(data:any) => setCurrentSigma(data)} sSigma={(data:any) => setSigma(data)} />
-      </SigmaContainer>
-      <Comments/>
-    </>
->>>>>>> d0042f81fc99a4b7c22e0faef8bf46dbaaca06c8
   );
 
 }

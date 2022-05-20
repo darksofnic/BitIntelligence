@@ -14,7 +14,7 @@ const Contact = () => {
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [contactEmail, setContactEmail] = useState(""); 
+    const [contactEmail, setContactEmail] = useState("");
 
     const sendEmail = async(e) =>{
         e.preventDefault();
@@ -35,7 +35,7 @@ const Contact = () => {
            <br></br>
            <br></br>
             <hr></hr>
-            <div className="container">           
+            <div className="container">
                      <h2 className="desc">Staff Members</h2>
                      <hr/>
 
@@ -49,10 +49,10 @@ const Contact = () => {
                                 -. Problem solver<br/>
                                 -. Back-end<br/>
                                 -. Front-end<br/>
-                                
+
                                 <b>Contact information</b><br/>
                                       Email: harveympv16@gmail.com<br/>
-                                      Phone: N/A</div>
+                                      </div>
 
                          </div>
                     </div>
@@ -60,7 +60,7 @@ const Contact = () => {
 
 
                     <div className="desc-container">
-                      
+
                       <div className="desc-card desc-two"></div>
                       <div className="desc-description">
                           <h3>Muhaned Ghabour <Icon libraryName='computer' /></h3>
@@ -69,10 +69,10 @@ const Contact = () => {
                                 -. User Interface<br/>
                                 -. Research<br/>
                                 -. Back-end Developer<br/>
-                                
+
                                 <b>Contact information</b><br/>
                                       Email: muhaned@ghabour.net<br/>
-                                      Phone: Roles</div>
+                                      </div>
                       </div>
                     </div>
 
@@ -87,12 +87,12 @@ const Contact = () => {
                                 -. Front-end<br/>
                                 -. User Interface<br/>
                                 -. Research<br/>
-                                
+
                                 <b>Contact information</b><br/>
-                                      Email: Roles<br/>
-                                      Phone: Roles</div>
+                                      Email: c.whittlesey001@umb.edu<br/>
+                                      </div>
                         </div>
-                      
+
                     </div>
 
                     <div className="desc-container">
@@ -104,17 +104,17 @@ const Contact = () => {
                                 -. Front-end<br/>
                                 -. Research<br/>
                                 -. Writer<br/>
-                                
-                                <b>Contact information</b><br/>
-                                      Email: Roles<br/>
-                                      Phone: Roles</div>
-                        </div>
-                      
-                    </div>
-                    </div> 
-                
 
-            
+                                <b>Contact information</b><br/>
+                                      Email: drew.jackson@umb.edu<br/>
+                                      </div>
+                        </div>
+
+                    </div>
+                    </div>
+
+
+
 
 
         </React.Fragment>
