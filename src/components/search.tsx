@@ -1,10 +1,9 @@
 import React,{ FC,KeyboardEvent,ChangeEvent,useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal,Button,Form,Dropdown,DropdownButton}  from 'react-bootstrap';
 import { useSigma, useLoadGraph,useRegisterEvents } from 'react-sigma-v2'
 
 import { Attributes } from "graphology-types";
-import { FiltersState } from "../types";
+import { FiltersState } from "../api/types";
 import { parse } from 'node:path/win32';
 
 const Search: FC<{ filters : FiltersState}> = ( { filters }) => {
@@ -74,7 +73,7 @@ const Search: FC<{ filters : FiltersState}> = ( { filters }) => {
         }
     };
 
-    return (<div className="search-wrapper" style={{"background":"#404040","border":"1px solid #5a5a5a","boxShadow":"4px -3px 6px 1px #000000e0","position":"absolute","bottom":"10px","left":"10px","padding":"5px","borderRadius":"10px","minWidth":"200px"}}>
+    return (<div className="search-wrapper" style={{"minWidth":"200px","padding":"10px","borderRadius":"10px","border":"1px solid hsl(0deg 0% 35% / 62%)","boxShadow":"rgb(0 0 0 / 35%) 4px -3px 6px 1px","position":"absolute","bottom":"10px","left":"10px","outline":"none","background":"rgb(255 255 255 / 63%)"}}>
       <input
         type="search"
         placeholder="Search in nodes..."
@@ -82,7 +81,7 @@ const Search: FC<{ filters : FiltersState}> = ( { filters }) => {
         value={search}
         onChange={onInputChange}
         onKeyPress={onKeyPress}
-        style={{"background":"transparent","border":"0px","color":"#fff","outline":"none"}}
+        style={{"background":"transparent","border":"0px","color":"#rgb(51 51 51)","outline":"none"}}
       />
       <datalist id="nodes">
         {values.map((value: { id: string; label: string }) => (
